@@ -2,6 +2,8 @@ package com.estee.demo;
 
 
 import lombok.extern.slf4j.Slf4j;
+import okhttp3.OkHttpClient;
+import org.openapitools.client.ApiClient;
 import org.openapitools.client.ApiException;
 import org.openapitools.client.api.ConsumersManagementApi;
 import org.openapitools.client.model.BrandEnum;
@@ -20,7 +22,13 @@ import java.util.List;
 @Slf4j
 public class DemoController {
 
-    private final ConsumersManagementApi api = new ConsumersManagementApi();
+    private ConsumersManagementApi api = new ConsumersManagementApi();
+
+    public DemoController() {
+        final ApiClient apiClient = api.getApiClient();
+        apiClient.setConnectTimeout(50000);
+        apiClient.setWriteTimeout(50000);
+    }
 
     @GetMapping("/")
     public String home (){
@@ -37,14 +45,12 @@ public class DemoController {
                                @RequestParam("phoneNumber") String phoneNumber,
                                @RequestParam("postalCode") String postalCode,
                                 Model model) throws ApiException {
-        log.warn(market);
-
         var marketId = MarketEnum.fromValue(market);
         var brand = BrandEnum.fromValue(brandString);
 
         final List<Consumer> consumers = api.getConsumers(marketId, firstName, lastName, brand, email, phoneNumber, postalCode, 0, 100);
 
-        consumers.stream().forEach(consumer -> log.warn(consumer.toString()));
+        model.addAttribute("consumerList", consumers);
         return "home";
     }
 
