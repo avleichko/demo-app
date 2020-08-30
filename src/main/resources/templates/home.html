@@ -54,7 +54,7 @@
     <h3 class="mb-5">
       <em>Get a list of market specific consumers</em>
     </h3>
-    <form method="post" action="/get-consumers">
+    <form method="post" action="/get-consumer">
 
       <select class="form-control form-control-xl" name="market">
         <option value="US">US</option>
@@ -62,14 +62,14 @@
       </select>
       <br />
 
-      <input type="text" name="firstName">
-      <input type="text" name="lastName">
-      <input type="text" name="brandString">
-      <input type="email" name="email">
-      <input type="tel" name="phoneNumber">
-      <input type="text" name="postalCode">
+      <input type="text" class="form-control form-control-xl" name="firstName"   placeholder="First name" > <br />
+      <input type="text" class="form-control form-control-xl" name="lastName" placeholder="Last name"> <br />
+      <input type="text" class="form-control form-control-xl" name="brandString" placeholder="Brand"> <br />
+      <input type="email" class="form-control form-control-xl"  name="email" placeholder="Email"> <br />
+      <input type="tel"  class="form-control form-control-xl" name="phoneNumber" placeholder="Phone"> <br />
+      <input type="text" class="form-control form-control-xl" name="postalCode"  placeholder="Postal code"> <br />
       &nbsp;
-      <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Find Consumers"></input>
+      <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Find Consumers" />
     </form>
   </div>
   <div class="overlay"></div>
