@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+
 
 import java.util.List;
 
@@ -26,14 +28,15 @@ public class DemoController {
         return "home";
     }
 
-    @PostMapping("/get-consumer")
-    public String getConsumer (@RequestParam("market") String market,
+    @PostMapping("/get-consumers")
+    public String getConsumers (@RequestParam("market") String market,
                                @RequestParam("firstName") String firstName,
                                @RequestParam("lastName") String lastName,
                                @RequestParam("brandString") String brandString,
                                @RequestParam("email") String email,
                                @RequestParam("phoneNumber") String phoneNumber,
-                               @RequestParam("postalCode") String postalCode) throws ApiException {
+                               @RequestParam("postalCode") String postalCode,
+                                Model model) throws ApiException {
         log.warn(market);
 
         var marketId = MarketEnum.fromValue(market);
@@ -41,6 +44,26 @@ public class DemoController {
 
         final List<Consumer> consumers = api.getConsumers(marketId, firstName, lastName, brand, email, phoneNumber, postalCode, 0, 100);
 
+        consumers.stream().forEach(consumer -> log.warn(consumer.toString()));
         return "home";
     }
+
+
+    @PostMapping("/get-consumer")
+    public String getConsumer (@RequestParam("market") String market,
+                               @RequestParam("consumerId") Long consumerId, Model model) throws ApiException {
+        log.trace("attempting to get consumer");
+
+        var marketId = MarketEnum.fromValue(market);
+        final Consumer consumer1 = api.getConsumer(marketId, consumerId);
+
+        log.info(consumer1.toString());
+
+        model.addAttribute("Consumer", consumer1);
+
+        return "home";
+    }
+
+
+
 }
