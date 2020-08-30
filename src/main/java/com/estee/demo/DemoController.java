@@ -59,7 +59,7 @@ public class DemoController {
 
         log.info(consumer1.toString());
 
-        model.addAttribute("Consumer", consumer1);
+        model.addAttribute("consumer", consumer1);
 
         return "home";
     }

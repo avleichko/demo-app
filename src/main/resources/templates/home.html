@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -75,7 +75,7 @@
   <div class="overlay"></div>
 </header>
 
-<!-- About -->
+<!-- Get Consumer -->
 <section class="content-section bg-light" id="about">
   <div class="container text-center">
     <div class="row">
@@ -103,47 +103,84 @@
 <section class="content-section bg-primary text-white text-center" id="services">
   <div class="container">
     <div class="content-section-heading">
-      <h3 class="text-secondary mb-0">Services</h3>
-      <h2 class="mb-5">What We Offer</h2>
+      <h2 class="mb-5">Consumer details</h2>
     </div>
-    <div class="row">
+
+    <div class="row" th:if="${consumer!=null}">
+
       <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-screen-smartphone"></i>
-          </span>
         <h4>
-          <strong>Responsive</strong>
+          <strong >elcMasterId</strong>
         </h4>
-        <p class="text-faded mb-0">Looks great on any screen size!</p>
+        <p class="text-faded mb-0" th:text="${consumer.getElcMasterId()}"></p>
       </div>
       <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-pencil"></i>
-          </span>
         <h4>
-          <strong>Redesigned</strong>
+          <strong>First Name</strong>
         </h4>
-        <p class="text-faded mb-0">Freshly redesigned for Bootstrap 4.</p>
+        <p class="text-faded mb-0" th:text="${consumer.getFirstName()}"></p>
       </div>
       <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-like"></i>
-          </span>
         <h4>
-          <strong>Favorited</strong>
+          <strong>middleName</strong>
         </h4>
-        <p class="text-faded mb-0">Millions of users
-          <i class="fas fa-heart"></i>
-          Start Bootstrap!</p>
+        <p class="text-faded mb-0" th:text="${consumer.getMiddleName()}">
       </div>
       <div class="col-lg-3 col-md-6">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class="icon-mustache"></i>
-          </span>
         <h4>
-          <strong>Question</strong>
+          <strong>lastName</strong>
         </h4>
-        <p class="text-faded mb-0">I mustache you a question...</p>
+        <p class="text-faded mb-0" th:text="${consumer.getLastName()}"></p>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>
+          <strong>birthday</strong>
+        </h4>
+        <p class="text-faded mb-0" th:text="${consumer.getBirthday().toString()}"></p>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>
+          <strong>Gender</strong>
+        </h4>
+        <p class="text-faded mb-0" th:text="${consumer.getGender()}"></p>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>
+          <strong>Language</strong>
+        </h4>
+        <p class="text-faded mb-0" th:text="${consumer.getLanguage()}"></p>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>
+          <strong>Brand</strong>
+        </h4>
+        <p class="text-faded mb-0" th:text="${consumer.getBrand()}"></p>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>
+          <strong>Market</strong>
+        </h4>
+        <p class="text-faded mb-0" th:text="${consumer.getMarket()}"></p>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>
+          <strong>Phone number</strong>
+        </h4>
+        <p class="text-faded mb-0" th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>
+          <strong>Email</strong>
+        </h4>
+        <p class="text-faded mb-0" th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>
+          <strong>Address</strong>
+        </h4>
+        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCountry()}"></p>
+        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCity()}"></p>
+        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
       </div>
     </div>
   </div>
