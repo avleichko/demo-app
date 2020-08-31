@@ -44,16 +44,29 @@ public class DemoController {
     }
 
     @PostMapping("/get-consumers")
-    public String getConsumers(@RequestParam("market") String market,
-                               @RequestParam("firstName") String firstName,
-                               @RequestParam("lastName") String lastName,
-                               @RequestParam("brandString") String brandString,
-                               @RequestParam("email") String email,
-                               @RequestParam("phoneNumber") String phoneNumber,
-                               @RequestParam("postalCode") String postalCode,
+    public String getConsumers(@RequestParam(value = "market") String market,
+                               @RequestParam(value = "firstName", required = false) String firstName,
+                               @RequestParam(value = "lastName", required = false) String lastName,
+                               @RequestParam(value = "brandString") String brandString,
+                               @RequestParam(value = "email", required = false) String email,
+                               @RequestParam(value = "phoneNumber", required = false) String phoneNumber,
+                               @RequestParam(value = "postalCode", required = false) String postalCode,
                                Model model) throws ApiException {
         var marketId = MarketEnum.fromValue(market);
         var brand = BrandEnum.fromValue(brandString);
+
+        if(firstName.isBlank()){
+            firstName=null;
+        }
+        if(lastName.isBlank()){
+            lastName=null;
+        } if(email.isBlank()){
+            email=null;
+        } if(phoneNumber.isBlank()){
+            phoneNumber=null;
+        }if(postalCode.isBlank()){
+            postalCode=null;
+        }
 
         final List<Consumer> consumers = api.getConsumers(marketId, firstName, lastName, brand, email, phoneNumber, postalCode, 0, 100);
 
