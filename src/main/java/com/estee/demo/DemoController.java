@@ -31,20 +31,19 @@ public class DemoController {
     }
 
     @GetMapping("/")
-    public String home (){
-
+    public String home() {
         return "home";
     }
 
     @PostMapping("/get-consumers")
-    public String getConsumers (@RequestParam("market") String market,
+    public String getConsumers(@RequestParam("market") String market,
                                @RequestParam("firstName") String firstName,
                                @RequestParam("lastName") String lastName,
                                @RequestParam("brandString") String brandString,
                                @RequestParam("email") String email,
                                @RequestParam("phoneNumber") String phoneNumber,
                                @RequestParam("postalCode") String postalCode,
-                                Model model) throws ApiException {
+                               Model model) throws ApiException {
         var marketId = MarketEnum.fromValue(market);
         var brand = BrandEnum.fromValue(brandString);
 
@@ -56,8 +55,8 @@ public class DemoController {
 
 
     @PostMapping("/get-consumer")
-    public String getConsumer (@RequestParam("market") String market,
-                               @RequestParam("consumerId") Long consumerId, Model model) throws ApiException {
+    public String getConsumer(@RequestParam("market") String market,
+                              @RequestParam("consumerId") Long consumerId, Model model) throws ApiException {
         log.trace("attempting to get consumer");
 
         var marketId = MarketEnum.fromValue(market);
@@ -69,7 +68,6 @@ public class DemoController {
 
         return "home";
     }
-
 
 
 }
