@@ -83,6 +83,7 @@ public class DemoController {
                                  Model model) throws ApiException {
         log.trace("attempting to create consumer");
 
+        //TODO add just for ui fix
         var phoneNumber = new PhoneNumber();
         phoneNumber.setPhoneNumber("+19052223333;ext=555");
         consumer.setPhoneNumber(List.of(phoneNumber));
