@@ -64,7 +64,12 @@
 
       <input type="text" class="form-control form-control-xl" name="firstName"   placeholder="First name" > <br />
       <input type="text" class="form-control form-control-xl" name="lastName" placeholder="Last name"> <br />
-      <input type="text" class="form-control form-control-xl" name="brandString" placeholder="Brand"> <br />
+      <select class="form-control form-control-xl" name="brandString" th:placeholder="brand" required>
+        <option value="MAC">MAC</option>
+        <option value="EsteeLauder">ESTEELAUDER</option>
+        <option value="BobbiBrown">BOBBIBROWN</option>
+        <option value="LaMer">LAMER</option>
+      </select><br />
       <input type="email" class="form-control form-control-xl"  name="email" placeholder="Email"> <br />
       <input type="tel"  class="form-control form-control-xl" name="phoneNumber" placeholder="Phone"> <br />
       <input type="text" class="form-control form-control-xl" name="postalCode"  placeholder="Postal code"> <br />
@@ -185,7 +190,7 @@
           </select>
           <br />
 
-          <input type="text" class="form-control form-control-xl" name="consumerId"   placeholder="Consumer id" > <br />&nbsp;
+          <input type="text" class="form-control form-control-xl" name="consumerId"   placeholder="Consumer id"  required> <br />&nbsp;
           <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Find Consumer" />
         </form>
       </div>
@@ -280,7 +285,7 @@
   </div>
 </section>
 
-<!-- Callout -->
+<!-- Create Consumer -->
 <section class="callout">
   <div class="container text-center" id="createConsumer">
     <h2 class="mx-auto mb-5">Create consumer</h2>
@@ -293,7 +298,7 @@
       </select>
       <br />
 
-      <select class="form-control form-control-xl" name="brand">
+      <select class="form-control form-control-xl" name="brand" required>
         <option value="MAC">MAC</option>
         <option value="ESTEELAUDER">ESTEELAUDER</option>
         <option value="BOBBIBROWN">BOBBIBROWN</option>
@@ -317,30 +322,30 @@
       </select>
       <br />
       <label>Birth day</label>
-      <input type="number"  name= "birthday.year"  placeholder="YYYY" class="form-control form-control-m">
-      <input type="number"  name= "birthday.month"  placeholder="MM" class="form-control form-control-m">
-      <input type="number"  name= "birthday.day"  placeholder="DD" class="form-control form-control-m"><br />
+      <input required type="number"  name= "birthday.year"  placeholder="YYYY" class="form-control form-control-m">
+      <input required type="number"  name= "birthday.month"  placeholder="MM" class="form-control form-control-m">
+      <input required type="number"  name= "birthday.day"  placeholder="DD" class="form-control form-control-m"><br />
 
-      <input type="text"  name= "firstName"  placeholder="First Name" class="form-control form-control-xl"><br />
+      <input required type="text"  name= "firstName"  placeholder="First Name" class="form-control form-control-xl"><br />
 
-      <input type="text"  name= "middleName"  placeholder="Middle name" class="form-control form-control-xl"><br />
+      <input required type="text"  name= "middleName"  placeholder="Middle name" class="form-control form-control-xl"><br />
 
-      <input type="text"  name= "lastName"  placeholder="Last name" class="form-control form-control-xl"><br />
+      <input required type="text"  name= "lastName"  placeholder="Last name" class="form-control form-control-xl"><br />
 
-      <input type="number"  name= "consumerHomeStore"  placeholder="Consumer Home Store" class="form-control form-control-xl"><br />
+      <input required type="number"  name= "consumerHomeStore"  placeholder="Consumer Home Store" class="form-control form-control-xl"><br />
 
-      <input type="text"  name= "market"  placeholder="Market" class="form-control form-control-xl"><br />
+      <input required type="text"  name= "market"  placeholder="Market" class="form-control form-control-xl"><br />
 
-      <input type="text"  name= "lastUpdateTimestamp"  placeholder="lastUpdateTimestamp" class="form-control form-control-xl"><br />
+      <input required type="text"  name= "lastUpdateTimestamp"  placeholder="lastUpdateTimestamp" class="form-control form-control-xl"><br />
 
-      <input type="text"  name= "lastPurchaseTimestamp"  placeholder="lastPurchaseTimestamp" class="form-control form-control-xl"><br />
+      <input required type="text"  name= "lastPurchaseTimestamp"  placeholder="lastPurchaseTimestamp" class="form-control form-control-xl"><br />
 
-     <!-- <input type="text"  name= "loyalty"  placeholder="loyalty" class="form-control form-control-xl"><br /> -->
+     <!-- <input required type="text"  name= "loyalty"  placeholder="loyalty" class="form-control form-control-xl"><br /> -->
 
 
-      <!-- <input type="text"  name= "email"  placeholder="Email" class="form-control form-control-xl"><br /> -->
+      <!-- <input required type="text"  name= "email"  placeholder="Email" class="form-control form-control-xl"><br /> -->
 
-      <!-- <input type="text"  name= "address"  placeholder="Addres" class="form-control form-control-xl"><br /> -->
+      <!-- <input required type="text"  name= "address"  placeholder="Addres" class="form-control form-control-xl"><br /> -->
 
       &nbsp;
       <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Create consumer" />
