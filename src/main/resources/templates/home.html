@@ -61,7 +61,8 @@
         </h3>
 
         <section id="authenticate">
-            <input type="button" class="btn btn-danger btn-xl js-scroll-trigger" value="Autenticate application" onclick="authenticate()"/>
+            <input type="button" class="btn btn-danger btn-xl js-scroll-trigger" value="Autenticate application"
+                   onclick="authenticate()"/>
         </section>
 
 
@@ -155,24 +156,32 @@
                     <h4>
                         <strong>Phone number</strong>
                     </h4>
-                    <th:block th:if="${consumer != null  && consumer.getPhoneNumber() != null && !consumer.getPhoneNumber().isEmpty()}">
-          <p class="text-faded mb-0"
-                       th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p></th:block>
+                    <th:block
+                            th:if="${consumer != null  && consumer.getPhoneNumber() != null && !consumer.getPhoneNumber().isEmpty()}">
+                        <p class="text-faded mb-0"
+                           th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p></th:block>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4>
                         <strong>Email</strong>
-                    </h4><th:block th:if="${consumer != null  && consumer.getEmail() != null && !consumer.getEmail().isEmpty()}">
-                    <p class="text-faded mb-0" th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p></th:block>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>
-                        <strong>Address</strong>
                     </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCountry()}"></p>
-                    <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCity()}"></p>
-                    <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
+                    <th:block
+                            th:if="${consumer != null  && consumer.getEmail() != null && !consumer.getEmail().isEmpty()}">
+                        <p class="text-faded mb-0"
+                           th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p></th:block>
                 </div>
+                <th:block
+                        th:if="${consumer != null  && consumer.getAddress() != null && !consumer.getAddress().isEmpty()}">
+                    <div class="col-lg-3 col-md-6">
+                        <h4>
+                            <strong>Address</strong>
+                        </h4>
+
+                        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCountry()}"></p>
+                        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCity()}"></p>
+                        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
+                    </div>
+                </th:block>
                 <div class="container">
                     <ul class="list-inline mb-5">
                         <li class="list-inline-item">
@@ -284,24 +293,30 @@
                 <h4>
                     <strong>Phone number</strong>
                 </h4>
-                <th:block th:if="${consumer != null  && consumer.getPhoneNumber() != null && !consumer.getPhoneNumber().isEmpty()}">
-          <p class="text-faded mb-0"
-                   th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p></th:block>
+                <th:block
+                        th:if="${consumer != null  && consumer.getPhoneNumber() != null && !consumer.getPhoneNumber().isEmpty()}">
+                    <p class="text-faded mb-0"
+                       th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p>
+                </th:block>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4>
                     <strong>Email</strong>
-                </h4><th:block th:if="${consumer != null  && consumer.getEmail() != null && !consumer.getEmail().isEmpty()}">
-                <p class="text-faded mb-0" th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p></th:block>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h4>
-                    <strong>Address</strong>
                 </h4>
-                <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCountry()}"></p>
-                <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCity()}"></p>
-                <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
+                <th:block th:if="${consumer != null  && consumer.getEmail() != null && !consumer.getEmail().isEmpty()}">
+                    <p class="text-faded mb-0" th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p>
+                </th:block>
             </div>
+            <th:block th:if="${consumer != null  && consumer.getAddress() != null && !consumer.getAddress().isEmpty()}">
+                <div class="col-lg-3 col-md-6">
+                    <h4>
+                        <strong>Address</strong>
+                    </h4>
+                    <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCountry()}"></p>
+                    <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCity()}"></p>
+                    <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
+                </div>
+            </th:block>
         </div>
     </div>
 </section>
@@ -442,24 +457,31 @@
                     <h4>
                         <strong>Phone number</strong>
                     </h4>
-                    <th:block th:if="${consumer != null  && consumer.getPhoneNumber() != null && !consumer.getPhoneNumber().isEmpty()}">
-            <p class="text-faded mb-0"
-                       th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p></th:block>
+                    <th:block
+                            th:if="${consumer != null  && consumer.getPhoneNumber() != null && !consumer.getPhoneNumber().isEmpty()}">
+                        <p class="text-faded mb-0"
+                           th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p></th:block>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4>
                         <strong>Email</strong>
-                    </h4><th:block th:if="${consumer != null  && consumer.getEmail() != null && !consumer.getEmail().isEmpty()}">
-                    <p class="text-faded mb-0" th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p></th:block>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>
-                        <strong>Address</strong>
                     </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCountry()}"></p>
-                    <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCity()}"></p>
-                    <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
+                    <th:block
+                            th:if="${consumer != null  && consumer.getEmail() != null && !consumer.getEmail().isEmpty()}">
+                        <p class="text-faded mb-0"
+                           th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p></th:block>
                 </div>
+                <th:block
+                        th:if="${consumer != null  && consumer.getAddress() != null && !consumer.getAddress().isEmpty()}">
+                    <div class="col-lg-3 col-md-6">
+                        <h4>
+                            <strong>Address</strong>
+                        </h4>
+                        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCountry()}"></p>
+                        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCity()}"></p>
+                        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
+                    </div>
+                </th:block>
             </div>
         </div>
     </section>
@@ -473,10 +495,10 @@
 
 <script>
     function authenticate() {
-        $.get( "/auth", function( data ) {
-            $( ".result" ).html( data );
+        $.get("/auth", function (data) {
+            $(".result").html(data);
             alert(
-            JSON.stringify(data));
+                JSON.stringify(data));
         });
     }
 </script>

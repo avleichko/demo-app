@@ -105,9 +105,7 @@ public class DemoController {
         apiClient.addDefaultHeader("Authorization", "Bearer " + this.token.getToken());
         setupRequiredFieldsForTheUI(consumer);
 
-
         final Consumer consumer1 = api.createConsumer(consumer.getMarket(), consumer);
-
 
         model.addAttribute("createdConsumer", consumer1);
         return "home";
