@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class AuthController {
 
-    private WebClient  webClient;
+    private final WebClient  webClient;
     private AccessToken token;
 
     public AuthController(WebClient webClient, AccessToken token) {

@@ -26,7 +26,7 @@ import java.util.UUID;
 @Slf4j
 public class DemoController {
 
-    private ConsumersManagementApi api = new ConsumersManagementApi();
+    private final ConsumersManagementApi api = new ConsumersManagementApi();
     private AccessToken token;
 
     public DemoController(AccessToken token) {
