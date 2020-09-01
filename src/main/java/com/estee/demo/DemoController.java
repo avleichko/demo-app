@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
+import org.springframework.web.reactive.function.client.WebClient;
 
 
 import java.util.List;
@@ -55,17 +56,20 @@ public class DemoController {
         var marketId = MarketEnum.fromValue(market);
         var brand = BrandEnum.fromValue(brandString);
 
-        if(firstName.isBlank()){
-            firstName=null;
+        if (firstName.isBlank()) {
+            firstName = null;
         }
-        if(lastName.isBlank()){
-            lastName=null;
-        } if(email.isBlank()){
-            email=null;
-        } if(phoneNumber.isBlank()){
-            phoneNumber=null;
-        }if(postalCode.isBlank()){
-            postalCode=null;
+        if (lastName.isBlank()) {
+            lastName = null;
+        }
+        if (email.isBlank()) {
+            email = null;
+        }
+        if (phoneNumber.isBlank()) {
+            phoneNumber = null;
+        }
+        if (postalCode.isBlank()) {
+            postalCode = null;
         }
 
         final List<Consumer> consumers = api.getConsumers(marketId, firstName, lastName, brand, email, phoneNumber, postalCode, 0, 100);
@@ -100,7 +104,7 @@ public class DemoController {
         var phoneNumber = new PhoneNumber();
         phoneNumber.setPhoneNumber("+19052223333;ext=555");
         consumer.setPhoneNumber(List.of(phoneNumber));
-        var  email = new EmailAddress();
+        var email = new EmailAddress();
         email.setEmailAddress("test@email.com");
         consumer.setEmail(List.of(email));
         var adres = new Address();
