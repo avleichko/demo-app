@@ -99,7 +99,7 @@
 <section class="content-section bg-primary text-white text-center" id="services">
     <div class="container">
         <div class="content-section-heading">
-            <h2 class="mb-5">Consumer List</h2>
+            <h2 class="mb-5" id="Consumer_List">Consumers list</h2>
         </div>
 
         <div class="row" th:if="${consumerList!=null && consumerList.size()!=0}">
@@ -236,7 +236,7 @@
 <section class="content-section bg-primary text-white text-center" id="services">
     <div class="container">
         <div class="content-section-heading">
-            <h2 class="mb-5">Consumer details</h2>
+            <h2 class="mb-5" id="single_Consumer_details">Consumer details</h2>
         </div>
 
         <div class="row" th:if="${consumer!=null}">
@@ -400,7 +400,7 @@
     <section class="content-section bg-primary text-white text-center" id="createdConsumer">
         <div class="container">
             <div class="content-section-heading">
-                <h2 class="mb-5">Consumer details</h2>
+                <h2 class="mb-5" id="created_single_Consumer_details">Created consumer details</h2>
             </div>
 
             <div class="row" th:if="${consumer!=null}">
@@ -542,4 +542,25 @@
 
 </body>
 
+<script>
+
+    $( document ).ready(function() {
+        if ($(location).attr('href') === "http://localhost:8082/get-consumer"){
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#single_Consumer_details").offset().top
+            }, 2000);
+        }
+        if ($(location).attr('href') === "http://localhost:8082/create-consumer"){
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#created_single_Consumer_details").offset().top
+            }, 2000);
+        }
+        if ($(location).attr('href') === "http://localhost:8082/get-consumers"){
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#Consumer_List").offset().top
+            }, 2000);
+        }
+    });
+
+</script>
 </html>
