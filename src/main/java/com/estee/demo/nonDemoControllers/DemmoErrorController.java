@@ -1,4 +1,4 @@
-package com.estee.demo;
+package com.estee.demo.nonDemoControllers;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
