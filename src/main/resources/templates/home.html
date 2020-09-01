@@ -106,6 +106,12 @@
             <th:block th:each="consumer : ${consumerList}">
                 <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                     <h4>
+                        <strong>Consumer Id</strong>
+                    </h4>
+                    <a class="btn btn-warning" th:text="${'search consumer with ID:' + consumer.getConsumerId()}" th:alt="${consumer.getMarket()}" onclick="searchConsumer(this)"></a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                    <h4>
                         <strong>ElcMasterId</strong>
                     </h4>
                     <p class="text-faded mb-0" th:text="${consumer.getElcMasterId()}"></p>
@@ -209,17 +215,17 @@
                 <h2>Get consumer by market and Id</h2>
                 <p class="lead mb-5">
 
-                <form method="post" action="/get-consumer">
+                <form method="post" action="/get-consumer" id="get_consumer_form">
 
-                    <select class="form-control form-control-xl" name="market">
+                    <select class="form-control form-control-xl" name="market" id="get_consumer_by_id_market">
                         <option value="US">US</option>
                         <option value="US">CA</option>
                     </select>
                     <br/>
 
-                    <input type="text" class="form-control form-control-xl" name="consumerId" placeholder="Consumer id"
+                    <input type="text" class="form-control form-control-xl" name="consumerId" id="consumerId" placeholder="Consumer id"
                            required> <br/>&nbsp;
-                    <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Find Consumer"/>
+                    <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" id="submit_get_consumer_by_id" value="Find Consumer"/>
                 </form>
             </div>
         </div>
@@ -500,6 +506,28 @@
             alert(
                 JSON.stringify(data));
         });
+    }
+
+    function searchConsumer(elm) {
+        var market = $(elm).attr("alt");
+        var id = $(elm).text().replace("search consumer with ID:","");
+
+        console.log(market);
+        console.log(id);
+
+        elmnt = document.getElementById("get_consumer_by_id_market");
+        document.getElementById("consumerId").value = id;
+
+        for(var i=0; i < elmnt.options.length; i++)
+        {
+            if(elmnt.options[i].value === market) {
+                elmnt.selectedIndex = i;
+                break;
+            }
+        }
+
+        $("#get_consumer_form").submit();
+
     }
 </script>
 <!-- Bootstrap core JavaScript -->
