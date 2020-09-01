@@ -155,14 +155,15 @@
                     <h4>
                         <strong>Phone number</strong>
                     </h4>
-                    <p class="text-faded mb-0"
-                       th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p>
+                    <th:block th:if="${consumer != null  && consumer.getPhoneNumber() != null && !consumer.getPhoneNumber().isEmpty()}">
+          <p class="text-faded mb-0"
+                       th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p></th:block>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4>
                         <strong>Email</strong>
-                    </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p>
+                    </h4><th:block th:if="${consumer != null  && consumer.getEmail() != null && !consumer.getEmail().isEmpty()}">
+                    <p class="text-faded mb-0" th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p></th:block>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4>
@@ -283,14 +284,15 @@
                 <h4>
                     <strong>Phone number</strong>
                 </h4>
-                <p class="text-faded mb-0"
-                   th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p>
+                <th:block th:if="${consumer != null  && consumer.getPhoneNumber() != null && !consumer.getPhoneNumber().isEmpty()}">
+          <p class="text-faded mb-0"
+                   th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p></th:block>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4>
                     <strong>Email</strong>
-                </h4>
-                <p class="text-faded mb-0" th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p>
+                </h4><th:block th:if="${consumer != null  && consumer.getEmail() != null && !consumer.getEmail().isEmpty()}">
+                <p class="text-faded mb-0" th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p></th:block>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4>
@@ -440,14 +442,15 @@
                     <h4>
                         <strong>Phone number</strong>
                     </h4>
-                    <p class="text-faded mb-0"
-                       th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p>
+                    <th:block th:if="${consumer != null  && consumer.getPhoneNumber() != null && !consumer.getPhoneNumber().isEmpty()}">
+            <p class="text-faded mb-0"
+                       th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p></th:block>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4>
                         <strong>Email</strong>
-                    </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p>
+                    </h4><th:block th:if="${consumer != null  && consumer.getEmail() != null && !consumer.getEmail().isEmpty()}">
+                    <p class="text-faded mb-0" th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p></th:block>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4>
