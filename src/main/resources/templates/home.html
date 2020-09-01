@@ -47,6 +47,11 @@
         <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="#createConsumer">Create Consumer</a>
         </li>
+        <th:block th:if="${consumer!=null}">
+            <li class="sidebar-nav-item">
+                <a class="js-scroll-trigger" href="#update-consume-section">Update Consumer</a>
+            </li>
+        </th:block>
     </ul>
 </nav>
 
@@ -326,7 +331,7 @@
                     <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
                 </div>
             </th:block>
-            <a class="btn btn-warning btn-xl js-scroll-trigger" href="#updateConsumer" > Edit consumer</a>
+            <a class="btn btn-warning btn-xl js-scroll-trigger" href="#updateConsumer" > Edit consumer form</a>
         </div>
     </div>
 </section>
@@ -497,7 +502,7 @@
     <th:block th:if="${consumer!=null}">
         <section class="callout">
             <div class="container text-center" id="updateConsumer">
-                <h2 class="mx-auto mb-5">Update consumer by ID consumer</h2>
+                <h2 class="mx-auto mb-5" id="update-consume-section">Update consumer by ID consumer</h2>
 
                 <form method="post" id="edit-consumer">
 
