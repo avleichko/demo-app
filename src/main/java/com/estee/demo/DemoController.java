@@ -111,6 +111,23 @@ public class DemoController {
         return "home";
     }
 
+
+    @PostMapping("/edit-consumer/{market}")
+    public String updeate(Consumer consumer,
+                                 @RequestParam String market,
+                                 Model model) throws ApiException {
+        log.trace("attempting to update consumer");
+
+        final ApiClient apiClient = api.getApiClient();
+        apiClient.addDefaultHeader("Authorization", "Bearer " + this.token.getToken());
+        setupRequiredFieldsForTheUI(consumer);
+
+        final Consumer consumer1 = api.updateConsumer(MarketEnum.fromValue(market), consumer.getConsumerId(), consumer);
+
+        model.addAttribute("UpdateConsumer", consumer1);
+        return "home";
+    }
+
     //TODO add just for ui fix
     private void setupRequiredFieldsForTheUI(Consumer consumer) {
         var phoneNumber = new PhoneNumber();

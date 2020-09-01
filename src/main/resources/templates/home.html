@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Stylish Portfolio - Start Bootstrap Template</title>
+    <title>Estee demo</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -108,7 +108,8 @@
                     <h4>
                         <strong>Consumer Id</strong>
                     </h4>
-                    <a class="btn btn-warning" th:text="${'search consumer with ID:' + consumer.getConsumerId()}" th:alt="${consumer.getMarket()}" onclick="searchConsumer(this)"></a>
+                    <a class="btn btn-warning" th:text="${'search consumer with ID:' + consumer.getConsumerId()}"
+                       th:alt="${consumer.getMarket()}" onclick="searchConsumer(this)"></a>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
                     <h4>
@@ -223,9 +224,11 @@
                     </select>
                     <br/>
 
-                    <input type="text" class="form-control form-control-xl" name="consumerId" id="consumerId" placeholder="Consumer id"
+                    <input type="text" class="form-control form-control-xl" name="consumerId" id="consumerId"
+                           placeholder="Consumer id"
                            required> <br/>&nbsp;
-                    <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" id="submit_get_consumer_by_id" value="Find Consumer"/>
+                    <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" id="submit_get_consumer_by_id"
+                           value="Find Consumer"/>
                 </form>
             </div>
         </div>
@@ -323,6 +326,7 @@
                     <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
                 </div>
             </th:block>
+            <a class="btn btn-warning btn-xl js-scroll-trigger" href="#updateConsumer" > Edit consumer</a>
         </div>
     </div>
 </section>
@@ -336,7 +340,6 @@
 
             <select class="form-control form-control-xl" name="market">
                 <option value="US">US</option>
-                <option value="US">CA</option>
             </select>
             <br/>
 
@@ -393,105 +396,174 @@
         </form>
     </div>
 </section>
-
-
-<!-- Footer -->
-<footer class="footer text-center">
-    <section class="content-section bg-primary text-white text-center" id="createdConsumer">
-        <div class="container">
-            <div class="content-section-heading">
-                <h2 class="mb-5" id="created_single_Consumer_details">Created consumer details</h2>
-            </div>
-
-            <div class="row" th:if="${consumer!=null}">
-
-                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                    <h4>
-                        <strong>ElcMasterId</strong>
-                    </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getElcMasterId()}"></p>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                    <h4>
-                        <strong>First Name</strong>
-                    </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getFirstName()}"></p>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                    <h4>
-                        <strong>Middle name</strong>
-                    </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getMiddleName()}">
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>
-                        <strong>Last name</strong>
-                    </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getLastName()}"></p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>
-                        <strong>Birthday</strong>
-                    </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getBirthday().toString()}"></p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>
-                        <strong>Gender</strong>
-                    </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getGender()}"></p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>
-                        <strong>Language</strong>
-                    </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getLanguage()}"></p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>
-                        <strong>Brand</strong>
-                    </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getBrand()}"></p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>
-                        <strong>Market</strong>
-                    </h4>
-                    <p class="text-faded mb-0" th:text="${consumer.getMarket()}"></p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>
-                        <strong>Phone number</strong>
-                    </h4>
-                    <th:block
-                            th:if="${consumer != null  && consumer.getPhoneNumber() != null && !consumer.getPhoneNumber().isEmpty()}">
-                        <p class="text-faded mb-0"
-                           th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p></th:block>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4>
-                        <strong>Email</strong>
-                    </h4>
-                    <th:block
-                            th:if="${consumer != null  && consumer.getEmail() != null && !consumer.getEmail().isEmpty()}">
-                        <p class="text-faded mb-0"
-                           th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p></th:block>
-                </div>
-                <th:block
-                        th:if="${consumer != null  && consumer.getAddress() != null && !consumer.getAddress().isEmpty()}">
-                    <div class="col-lg-3 col-md-6">
-                        <h4>
-                            <strong>Address</strong>
-                        </h4>
-                        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCountry()}"></p>
-                        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCity()}"></p>
-                        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
-                    </div>
-                </th:block>
-            </div>
+<section class="content-section bg-primary text-white text-center" id="createdConsumer">
+    <div class="container">
+        <div class="content-section-heading">
+            <h2 class="mb-5" id="created_single_Consumer_details">Created consumer details</h2>
         </div>
-    </section>
 
+        <div class="row" th:if="${consumer!=null}">
+
+            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                <h4>
+                    <strong>ElcMasterId</strong>
+                </h4>
+                <p class="text-faded mb-0" th:text="${consumer.getElcMasterId()}"></p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                <h4>
+                    <strong>First Name</strong>
+                </h4>
+                <p class="text-faded mb-0" th:text="${consumer.getFirstName()}"></p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                <h4>
+                    <strong>Middle name</strong>
+                </h4>
+                <p class="text-faded mb-0" th:text="${consumer.getMiddleName()}">
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4>
+                    <strong>Last name</strong>
+                </h4>
+                <p class="text-faded mb-0" th:text="${consumer.getLastName()}"></p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4>
+                    <strong>Birthday</strong>
+                </h4>
+                <p class="text-faded mb-0" th:text="${consumer.getBirthday().toString()}"></p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4>
+                    <strong>Gender</strong>
+                </h4>
+                <p class="text-faded mb-0" th:text="${consumer.getGender()}"></p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4>
+                    <strong>Language</strong>
+                </h4>
+                <p class="text-faded mb-0" th:text="${consumer.getLanguage()}"></p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4>
+                    <strong>Brand</strong>
+                </h4>
+                <p class="text-faded mb-0" th:text="${consumer.getBrand()}"></p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4>
+                    <strong>Market</strong>
+                </h4>
+                <p class="text-faded mb-0" th:text="${consumer.getMarket()}"></p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4>
+                    <strong>Phone number</strong>
+                </h4>
+                <th:block
+                        th:if="${consumer != null  && consumer.getPhoneNumber() != null && !consumer.getPhoneNumber().isEmpty()}">
+                    <p class="text-faded mb-0"
+                       th:text="${consumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p></th:block>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4>
+                    <strong>Email</strong>
+                </h4>
+                <th:block
+                        th:if="${consumer != null  && consumer.getEmail() != null && !consumer.getEmail().isEmpty()}">
+                    <p class="text-faded mb-0"
+                       th:text="${consumer.getEmail().get(0).getEmailAddress().toString()}"></p></th:block>
+            </div>
+            <th:block
+                    th:if="${consumer != null  && consumer.getAddress() != null && !consumer.getAddress().isEmpty()}">
+                <div class="col-lg-3 col-md-6">
+                    <h4>
+                        <strong>Address</strong>
+                    </h4>
+                    <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCountry()}"></p>
+                    <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCity()}"></p>
+                    <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</section>
+
+
+<!-- Update Consumer -->
+<footer class="footer text-center">
+    <th:block th:if="${consumer!=null}">
+        <section class="callout">
+            <div class="container text-center" id="updateConsumer">
+                <h2 class="mx-auto mb-5">Update consumer by ID consumer</h2>
+
+                <form method="post" id="edit-consumer">
+
+                    <input type="text" name="consumer_id" class="form-control form-control-m disabled" th:value="${consumer.consumerId}" disabled>
+                    <br/>
+                    <select class="form-control form-control-xl" name="market">
+                        <option value="US">US</option>
+                        <option value="US">CA</option>
+                    </select>
+                    <br/>
+
+                    <select class="form-control form-control-xl" name="brand" required>
+                        <option value="MAC">MAC</option>
+                        <option value="ESTEELAUDER">ESTEELAUDER</option>
+                        <option value="BOBBIBROWN">BOBBIBROWN</option>
+                        <option value="LAMER">LAMER</option>
+                    </select>
+                    <br/>
+
+                    <select class="form-control form-control-xl" name="gender" th:value="${consumer.getGender().toString().toUpperCase()}">
+                        <option value="FEMALE">FEMALE</option>
+                        <option value="MALE">MALE</option>
+                        <option value="NONBINARY">NONBINARY</option>
+                        <option value="UNKNOWN">UNKNOWN</option>
+                    </select>
+                    <br/>
+
+                    <select class="form-control form-control-xl" name="language" th:selected="${consumer.getLanguage().toString().toUpperCase()}">
+                        <option value="UNKNOWN">UNKNOWN</option>
+                        <option value="ENGLISH">ENGLISH</option>
+                        <option value="FRENCH">FRENCH</option>
+                        <option value="SPANISH">SPANISH</option>
+                    </select>
+                    <br/>
+                    <label>Birth day</label>
+                    <input required type="number" name="birthday.year" placeholder="YYYY" class="form-control form-control-m" th:value="${consumer.getBirthday().getYear()}">
+                    <input required type="number" name="birthday.month" placeholder="MM" class="form-control form-control-m" th:value="${consumer.getBirthday().getMonth()}">
+                    <input required type="number" name="birthday.day" placeholder="DD" class="form-control form-control-m" th:value="${consumer.getBirthday().getDay()}">
+                    <br/>
+
+                    <input required type="text" name="firstName" placeholder="First Name"
+                           class="form-control form-control-xl" th:value="${consumer.getFirstName()}"><br/>
+
+                    <input required type="text" name="middleName" placeholder="Middle name"
+                           class="form-control form-control-xl" th:value="${consumer.getMiddleName()}"><br/>
+
+                    <input required type="text" name="lastName" placeholder="Last name"
+                           class="form-control form-control-xl" th:value="${consumer.getLastName()}"><br/>
+
+                    <input required type="number" name="consumerHomeStore" placeholder="Consumer Home Store"
+                           class="form-control form-control-xl" th:value="${consumer.getConsumerHomeStore()}"><br/>
+
+                    <input required type="text" name="market" th:value="${consumer.getMarket().toString()}" placeholder="Market" class="form-control form-control-xl" disabled><br/>
+
+                    <input required type="text" name="lastUpdateTimestamp" placeholder="lastUpdateTimestamp"
+                           class="form-control form-control-xl" ><br/>
+
+                    <input required type="text" name="lastPurchaseTimestamp" placeholder="lastPurchaseTimestamp"
+                           class="form-control form-control-xl"><br/>
+
+                    &nbsp;
+                    <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Update consumer"/>
+                </form>
+            </div>
+        </section>
+    </th:block>
 </footer>
 
 <!-- Scroll to Top Button-->
@@ -510,7 +582,7 @@
 
     function searchConsumer(elm) {
         var market = $(elm).attr("alt");
-        var id = $(elm).text().replace("search consumer with ID:","");
+        var id = $(elm).text().replace("search consumer with ID:", "");
 
         console.log(market);
         console.log(id);
@@ -518,9 +590,8 @@
         elmnt = document.getElementById("get_consumer_by_id_market");
         document.getElementById("consumerId").value = id;
 
-        for(var i=0; i < elmnt.options.length; i++)
-        {
-            if(elmnt.options[i].value === market) {
+        for (var i = 0; i < elmnt.options.length; i++) {
+            if (elmnt.options[i].value === market) {
                 elmnt.selectedIndex = i;
                 break;
             }
@@ -544,18 +615,18 @@
 
 <script>
 
-    $( document ).ready(function() {
-        if ($(location).attr('href') === "http://localhost:8082/get-consumer"){
+    $(document).ready(function () {
+        if ($(location).attr('href') === "http://localhost:8082/get-consumer") {
             $([document.documentElement, document.body]).animate({
                 scrollTop: $("#single_Consumer_details").offset().top
             }, 2000);
         }
-        if ($(location).attr('href') === "http://localhost:8082/create-consumer"){
+        if ($(location).attr('href') === "http://localhost:8082/create-consumer") {
             $([document.documentElement, document.body]).animate({
                 scrollTop: $("#created_single_Consumer_details").offset().top
             }, 2000);
         }
-        if ($(location).attr('href') === "http://localhost:8082/get-consumers"){
+        if ($(location).attr('href') === "http://localhost:8082/get-consumers") {
             $([document.documentElement, document.body]).animate({
                 scrollTop: $("#Consumer_List").offset().top
             }, 2000);
