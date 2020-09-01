@@ -1,4 +1,4 @@
-package com.estee.demo;
+package com.estee.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
