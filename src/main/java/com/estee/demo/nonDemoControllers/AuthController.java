@@ -1,11 +1,10 @@
-package com.estee.demo;
+package com.estee.demo.nonDemoControllers;
 
 import com.estee.demo.config.AccessToken;
+import com.estee.demo.dto.AuthResponseDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;

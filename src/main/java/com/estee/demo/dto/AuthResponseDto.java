@@ -1,4 +1,4 @@
-package com.estee.demo;
+package com.estee.demo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
