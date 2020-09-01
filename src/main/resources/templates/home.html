@@ -501,7 +501,7 @@
 
                 <form method="post" id="edit-consumer">
 
-                    <input type="text" name="consumerId" class="form-control form-control-m disabled" th:value="${consumer.consumerId}" disabled>
+                    <input type="hidden" name="consumerId" class="form-control form-control-m disabled" th:value="${consumer.consumerId}" />
 
                     <br/>
                     <select class="form-control form-control-xl" name="market">
