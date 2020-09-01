@@ -27,7 +27,6 @@ import java.util.UUID;
 public class DemoController {
 
     private ConsumersManagementApi api = new ConsumersManagementApi();
-
     private AccessToken token;
 
     public DemoController(AccessToken token) {
@@ -88,11 +87,9 @@ public class DemoController {
 
         final ApiClient apiClient = api.getApiClient();
         apiClient.addDefaultHeader("Authorization", "Bearer " + this.token.getToken());
-
         var marketId = MarketEnum.fromValue(market);
-        final Consumer consumer1 = api.getConsumer(marketId, consumerId);
 
-        log.info(consumer1.toString());
+        final Consumer consumer1 = api.getConsumer(marketId, consumerId);
 
         model.addAttribute("consumer", consumer1);
 
@@ -106,8 +103,18 @@ public class DemoController {
         log.trace("attempting to create consumer");
         final ApiClient apiClient = api.getApiClient();
         apiClient.addDefaultHeader("Authorization", "Bearer " + this.token.getToken());
+        setupRequiredFieldsForTheUI(consumer);
 
-        //TODO add just for ui fix
+
+        final Consumer consumer1 = api.createConsumer(consumer.getMarket(), consumer);
+
+
+        model.addAttribute("createdConsumer", consumer1);
+        return "home";
+    }
+
+    //TODO add just for ui fix
+    private void setupRequiredFieldsForTheUI(Consumer consumer) {
         var phoneNumber = new PhoneNumber();
         phoneNumber.setPhoneNumber("+19052223333;ext=555");
         consumer.setPhoneNumber(List.of(phoneNumber));
@@ -120,14 +127,6 @@ public class DemoController {
         adres.setLine("2383  Burke Street");
         consumer.setAddress(List.of(adres));
         consumer.setElcMasterId(UUID.randomUUID());
-
-
-        final Consumer consumer1 = api.createConsumer(consumer.getMarket(), consumer);
-
-        model.addAttribute("createdConsumer", consumer1);
-
-
-        return "home";
     }
 
 
