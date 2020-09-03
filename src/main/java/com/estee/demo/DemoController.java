@@ -112,9 +112,10 @@ public class DemoController {
     }
 
 
-    @PostMapping("/edit-consumer/{market}")
+    @PostMapping("/edit-consumer/{market}/{consumerId}")
     public String updeate(Consumer consumer,
                                  @RequestParam String market,
+                                 @RequestParam Long consumerId,
                                  Model model) throws ApiException {
         log.trace("attempting to update consumer");
 
@@ -122,7 +123,7 @@ public class DemoController {
         apiClient.addDefaultHeader("Authorization", "Bearer " + this.token.getToken());
         setupRequiredFieldsForTheUI(consumer);
 
-        final Consumer consumer1 = api.updateConsumer(MarketEnum.fromValue(market), consumer.getConsumerId(), consumer);
+        final Consumer consumer1 = api.updateConsumer(MarketEnum.fromValue(market), consumerId, consumer);
 
         model.addAttribute("UpdateConsumer", consumer1);
         return "home";
