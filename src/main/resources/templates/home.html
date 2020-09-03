@@ -262,7 +262,7 @@
 </section>
 
 <!-- Services -->
-<section class="content-section bg-primary text-white text-center" id="services">
+<section class="content-section bg-primary text-white text-center" id="consumer_details">
     <div class="container">
         <div class="content-section-heading">
             <h2 class="mb-5" id="single_Consumer_details">Consumer details</h2>
@@ -592,10 +592,10 @@
         </section>
     </th:block>
 
-    <section class="content-section bg-primary text-white text-center" id="createdConsumer">
+    <section class="content-section bg-primary text-white text-center">
         <div class="container">
             <div class="content-section-heading">
-                <h2 class="mb-5" id="created_single_Consumer_details">Created consumer details</h2>
+                <h2 class="mb-5" id="update_single_Consumer_details">Updated consumer details</h2>
             </div>
 
             <div class="row" th:if="${updateConsumer!=null}">
@@ -759,6 +759,12 @@
         if ($(location).attr('href') === "http://localhost:8082/get-consumers") {
             $([document.documentElement, document.body]).animate({
                 scrollTop: $("#Consumer_List").offset().top
+            }, 2000);
+        }
+
+        if ($(location).attr('href').includes("http://localhost:8082/edit-consumer")) {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#update_single_Consumer_details").offset().top
             }, 2000);
         }
     });
