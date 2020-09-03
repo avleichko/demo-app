@@ -82,7 +82,7 @@
                     </div>
                     <div class="modal-body" style=" word-wrap: break-word;">
                         <h4>Authenticated:</h4>
-                        <p id="auth_text">Some text in the modal.</p>
+                        <p id="auth_text">Waiting for token ....</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -587,10 +587,106 @@
 
                     &nbsp;
                 </form>
-                <button class="btn btn-primary btn-xl js-scroll-trigger"  onclick="submitUpdate()">Update consumer</button>
+                <button class="btn btn-primary btn-xl js-scroll-trigger"   data-toggle="modal" data-target="#myModal2" onclick="submitUpdate()">Update consumer</button>
             </div>
         </section>
     </th:block>
+
+    <section class="content-section bg-primary text-white text-center" id="createdConsumer">
+        <div class="container">
+            <div class="content-section-heading">
+                <h2 class="mb-5" id="created_single_Consumer_details">Created consumer details</h2>
+            </div>
+
+            <div class="row" th:if="${updateConsumer!=null}">
+
+                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                    <h4>
+                        <strong>ElcMasterId</strong>
+                    </h4>
+                    <p class="text-faded mb-0" th:text="${updateConsumer.getElcMasterId()}"></p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                    <h4>
+                        <strong>First Name</strong>
+                    </h4>
+                    <p class="text-faded mb-0" th:text="${updateConsumer.getFirstName()}"></p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                    <h4>
+                        <strong>Middle name</strong>
+                    </h4>
+                    <p class="text-faded mb-0" th:text="${updateConsumer.getMiddleName()}">
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>
+                        <strong>Last name</strong>
+                    </h4>
+                    <p class="text-faded mb-0" th:text="${updateConsumer.getLastName()}"></p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>
+                        <strong>Birthday</strong>
+                    </h4>
+                    <p class="text-faded mb-0" th:text="${updateConsumer.getBirthday().toString()}"></p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>
+                        <strong>Gender</strong>
+                    </h4>
+                    <p class="text-faded mb-0" th:text="${updateConsumer.getGender()}"></p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>
+                        <strong>Language</strong>
+                    </h4>
+                    <p class="text-faded mb-0" th:text="${updateConsumer.getLanguage()}"></p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>
+                        <strong>Brand</strong>
+                    </h4>
+                    <p class="text-faded mb-0" th:text="${updateConsumer.getBrand()}"></p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>
+                        <strong>Market</strong>
+                    </h4>
+                    <p class="text-faded mb-0" th:text="${updateConsumer.getMarket()}"></p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>
+                        <strong>Phone number</strong>
+                    </h4>
+                    <th:block
+                            th:if="${updateConsumer != null  && updateConsumer.getPhoneNumber() != null && !updateConsumer.getPhoneNumber().isEmpty()}">
+                        <p class="text-faded mb-0"
+                           th:text="${updateConsumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p></th:block>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>
+                        <strong>Email</strong>
+                    </h4>
+                    <th:block
+                            th:if="${updateConsumer != null  && updateConsumer.getEmail() != null && !updateConsumer.getEmail().isEmpty()}">
+                        <p class="text-faded mb-0"
+                           th:text="${updateConsumer.getEmail().get(0).getEmailAddress().toString()}"></p></th:block>
+                </div>
+                <th:block
+                        th:if="${updateConsumer != null  && updateConsumer.getAddress() != null && !updateConsumer.getAddress().isEmpty()}">
+                    <div class="col-lg-3 col-md-6">
+                        <h4>
+                            <strong>Address</strong>
+                        </h4>
+                        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCountry()}"></p>
+                        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getCity()}"></p>
+                        <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </section>
+
 </footer>
 
 <!-- Scroll to Top Button-->
@@ -632,7 +728,7 @@
         $("#edit-consumer").attr("action", escape(urii))
         console.log($("#edit-consumer").attr("action"))
         $("#edit-consumer").submit();
-        alert("consumer update request sent")
+        console.log("consumer update request sent")
     }
 </script>
 <!-- Bootstrap core JavaScript -->

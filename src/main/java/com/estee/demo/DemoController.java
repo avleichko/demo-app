@@ -125,7 +125,7 @@ public class DemoController {
 
         final Consumer consumer1 = api.updateConsumer(MarketEnum.fromValue(market), consumerId, consumer);
 
-        model.addAttribute("UpdateConsumer", consumer1);
+        model.addAttribute("updateConsumer", consumer1);
         return "home";
     }
 
