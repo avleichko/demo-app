@@ -66,10 +66,31 @@
         </h3>
 
         <section id="authenticate">
-            <input type="button" class="btn btn-danger btn-xl js-scroll-trigger" value="Autenticate application"
+            <input type="button" class="btn btn-danger btn-xl js-scroll-trigger" data-toggle="modal" data-target="#myModal" value="Autenticate application"
                    onclick="authenticate()"/>
         </section>
 
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body" style=" word-wrap: break-word;">
+                        <h4>Authenticated:</h4>
+                        <p id="auth_text">Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
         <h3 class="mb-5">
             <em>Get a list of consumers</em>
@@ -581,8 +602,7 @@
     function authenticate() {
         $.get("/auth", function (data) {
             $(".result").html(data);
-            alert(
-                JSON.stringify(data));
+                $("#auth_text").text(JSON.stringify(data));
         });
     }
 
