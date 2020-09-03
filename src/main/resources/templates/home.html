@@ -410,12 +410,12 @@
                    class="form-control form-control-xl"><br/>
 
             <input required type="text" name="market" placeholder="Market" class="form-control form-control-xl"><br/>
-
+<!--
             <input required type="text" name="lastUpdateTimestamp" placeholder="lastUpdateTimestamp"
                    class="form-control form-control-xl"><br/>
 
             <input required type="text" name="lastPurchaseTimestamp" placeholder="lastPurchaseTimestamp"
-                   class="form-control form-control-xl"><br/>
+                   class="form-control form-control-xl"><br/>-->
 
             &nbsp;
             <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Create consumer"/>
@@ -530,7 +530,7 @@
                     <input type="text" name="consumerId" id="consumerIdUpdateFromText" class="form-control form-control-m disabled" th:value="${consumer.consumerId}" />
 
                     <br/>
-                    <select class="form-control form-control-xl" name="market">
+                    <select class="form-control form-control-xl" name="market" >
                         <option value="US">US</option>
                         <option value="US">CA</option>
                     </select>
@@ -578,12 +578,14 @@
                            class="form-control form-control-xl" th:value="${consumer.getConsumerHomeStore()}"><br/>
 
                     <input required type="text" name="market" id="edit_consumer_market" th:value="${consumer.getMarket().toString()}" placeholder="Market" class="form-control form-control-xl" disabled><br/>
+<!--
 
                     <input required type="text" name="lastUpdateTimestamp" placeholder="lastUpdateTimestamp"
                            class="form-control form-control-xl" ><br/>
 
                     <input required type="text" name="lastPurchaseTimestamp" placeholder="lastPurchaseTimestamp"
                            class="form-control form-control-xl"><br/>
+-->
 
                     &nbsp;
                 </form>
