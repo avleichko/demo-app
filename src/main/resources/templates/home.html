@@ -66,7 +66,8 @@
         </h3>
 
         <section id="authenticate">
-            <input type="button" class="btn btn-danger btn-xl js-scroll-trigger" data-toggle="modal" data-target="#myModal" value="Autenticate application"
+            <input type="button" class="btn btn-danger btn-xl js-scroll-trigger" data-toggle="modal"
+                   data-target="#myModal" value="Autenticate application"
                    onclick="authenticate()"/>
         </section>
 
@@ -105,7 +106,9 @@
 
             <input type="text" class="form-control form-control-xl" name="firstName" placeholder="First name"> <br/>
             <input type="text" class="form-control form-control-xl" name="lastName" placeholder="Last name"> <br/>
-            <select class="form-control form-control-xl" name="brandString" th:placeholder="brand" required>
+            <label>brand: </label><br/>
+            <select class="form-control form-control-xl" name="brandString" placeholder="brand">
+                <option></option>
                 <option value="MAC">MAC</option>
                 <option value="EsteeLauder">ESTEELAUDER</option>
                 <option value="BobbiBrown">BOBBIBROWN</option>
@@ -352,7 +355,7 @@
                     <p class="text-faded mb-0" th:text="${consumer.getAddress().get(0).getLine()}"></p>
                 </div>
             </th:block>
-            <a class="btn btn-warning btn-xl js-scroll-trigger" href="#updateConsumer" > Edit consumer form</a>
+            <a class="btn btn-warning btn-xl js-scroll-trigger" href="#updateConsumer"> Edit consumer form</a>
         </div>
     </div>
 </section>
@@ -385,6 +388,7 @@
             </select>
             <br/>
 
+            <label>Language: </label><br />
             <select class="form-control form-control-xl" name="language">
                 <option value="UNKNOWN">UNKNOWN</option>
                 <option value="ENGLISH">ENGLISH</option>
@@ -410,12 +414,12 @@
                    class="form-control form-control-xl"><br/>
 
             <input required type="text" name="market" placeholder="Market" class="form-control form-control-xl"><br/>
-<!--
-            <input required type="text" name="lastUpdateTimestamp" placeholder="lastUpdateTimestamp"
-                   class="form-control form-control-xl"><br/>
+            <!--
+                        <input required type="text" name="lastUpdateTimestamp" placeholder="lastUpdateTimestamp"
+                               class="form-control form-control-xl"><br/>
 
-            <input required type="text" name="lastPurchaseTimestamp" placeholder="lastPurchaseTimestamp"
-                   class="form-control form-control-xl"><br/>-->
+                        <input required type="text" name="lastPurchaseTimestamp" placeholder="lastPurchaseTimestamp"
+                               class="form-control form-control-xl"><br/>-->
 
             &nbsp;
             <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" value="Create consumer"/>
@@ -527,10 +531,11 @@
 
                 <form method="post" id="edit-consumer">
 
-                    <input type="text" name="consumerId" id="consumerIdUpdateFromText" class="form-control form-control-m disabled" th:value="${consumer.consumerId}" />
+                    <input type="text" name="consumerId" id="consumerIdUpdateFromText"
+                           class="form-control form-control-m disabled" th:value="${consumer.consumerId}"/>
 
                     <br/>
-                    <select class="form-control form-control-xl" name="market" >
+                    <select class="form-control form-control-xl" name="market">
                         <option value="US">US</option>
                         <option value="US">CA</option>
                     </select>
@@ -544,7 +549,8 @@
                     </select>
                     <br/>
 
-                    <select class="form-control form-control-xl" name="gender" th:value="${consumer.getGender().toString().toUpperCase()}">
+                    <select class="form-control form-control-xl" name="gender"
+                            th:value="${consumer.getGender().toString().toUpperCase()}">
                         <option value="FEMALE">FEMALE</option>
                         <option value="MALE">MALE</option>
                         <option value="NONBINARY">NONBINARY</option>
@@ -552,7 +558,10 @@
                     </select>
                     <br/>
 
-                    <select class="form-control form-control-xl" name="language" th:selected="${consumer.getLanguage().toString().toUpperCase()}">
+                    <label>Language: </label><br />
+                    <select class="form-control form-control-xl" name="language"
+                            th:selected="${consumer.getLanguage().toString().toUpperCase()}">
+                        <option></option>
                         <option value="UNKNOWN">UNKNOWN</option>
                         <option value="ENGLISH">ENGLISH</option>
                         <option value="FRENCH">FRENCH</option>
@@ -560,9 +569,12 @@
                     </select>
                     <br/>
                     <label>Birth day</label>
-                    <input required type="number" name="birthday.year" placeholder="YYYY" class="form-control form-control-m" th:value="${consumer.getBirthday().getYear()}">
-                    <input required type="number" name="birthday.month" placeholder="MM" class="form-control form-control-m" th:value="${consumer.getBirthday().getMonth()}">
-                    <input required type="number" name="birthday.day" placeholder="DD" class="form-control form-control-m" th:value="${consumer.getBirthday().getDay()}">
+                    <input required type="number" name="birthday.year" placeholder="YYYY"
+                           class="form-control form-control-m" th:value="${consumer.getBirthday().getYear()}">
+                    <input required type="number" name="birthday.month" placeholder="MM"
+                           class="form-control form-control-m" th:value="${consumer.getBirthday().getMonth()}">
+                    <input required type="number" name="birthday.day" placeholder="DD"
+                           class="form-control form-control-m" th:value="${consumer.getBirthday().getDay()}">
                     <br/>
 
                     <input required type="text" name="firstName" placeholder="First Name"
@@ -577,19 +589,23 @@
                     <input required type="number" name="consumerHomeStore" placeholder="Consumer Home Store"
                            class="form-control form-control-xl" th:value="${consumer.getConsumerHomeStore()}"><br/>
 
-                    <input required type="text" name="market" id="edit_consumer_market" th:value="${consumer.getMarket().toString()}" placeholder="Market" class="form-control form-control-xl" disabled><br/>
-<!--
+                    <input required type="text" name="market" id="edit_consumer_market"
+                           th:value="${consumer.getMarket().toString()}" placeholder="Market"
+                           class="form-control form-control-xl" disabled><br/>
+                    <!--
 
-                    <input required type="text" name="lastUpdateTimestamp" placeholder="lastUpdateTimestamp"
-                           class="form-control form-control-xl" ><br/>
+                                        <input required type="text" name="lastUpdateTimestamp" placeholder="lastUpdateTimestamp"
+                                               class="form-control form-control-xl" ><br/>
 
-                    <input required type="text" name="lastPurchaseTimestamp" placeholder="lastPurchaseTimestamp"
-                           class="form-control form-control-xl"><br/>
--->
+                                        <input required type="text" name="lastPurchaseTimestamp" placeholder="lastPurchaseTimestamp"
+                                               class="form-control form-control-xl"><br/>
+                    -->
 
                     &nbsp;
                 </form>
-                <button class="btn btn-primary btn-xl js-scroll-trigger"   data-toggle="modal" data-target="#myModal2" onclick="submitUpdate()">Update consumer</button>
+                <button class="btn btn-primary btn-xl js-scroll-trigger" data-toggle="modal" data-target="#myModal2"
+                        onclick="submitUpdate()">Update consumer
+                </button>
             </div>
         </section>
     </th:block>
@@ -663,7 +679,8 @@
                     <th:block
                             th:if="${updateConsumer != null  && updateConsumer.getPhoneNumber() != null && !updateConsumer.getPhoneNumber().isEmpty()}">
                         <p class="text-faded mb-0"
-                           th:text="${updateConsumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p></th:block>
+                           th:text="${updateConsumer.getPhoneNumber().get(0).getPhoneNumber().toString()}"></p>
+                    </th:block>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4>
@@ -700,7 +717,7 @@
     function authenticate() {
         $.get("/auth", function (data) {
             $(".result").html(data);
-                $("#auth_text").text(JSON.stringify(data));
+            $("#auth_text").text(JSON.stringify(data));
         });
     }
 
@@ -724,8 +741,9 @@
         $("#get_consumer_form").submit();
 
     }
-    function submitUpdate(market){
-        urii="/edit-consumer/"+ document.getElementById('edit_consumer_market').value +"/"+ document.getElementById('consumerIdUpdateFromText').value;
+
+    function submitUpdate(market) {
+        urii = "/edit-consumer/" + document.getElementById('edit_consumer_market').value + "/" + document.getElementById('consumerIdUpdateFromText').value;
 
         $("#edit-consumer").attr("action", escape(urii))
         console.log($("#edit-consumer").attr("action"))

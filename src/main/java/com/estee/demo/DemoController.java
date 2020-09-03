@@ -54,9 +54,13 @@ public class DemoController {
         final ApiClient apiClient = api.getApiClient();
         apiClient.addDefaultHeader("Authorization", "Bearer " + this.token.getToken());
 
-        var marketId = MarketEnum.fromValue(market);
-        var brand = BrandEnum.fromValue(brandString);
+        BrandEnum brand = null;
 
+        var marketId = MarketEnum.fromValue(market);
+
+        if (!brandString.isBlank()) {
+            brand = BrandEnum.fromValue(brandString);
+        }
         if (firstName.isBlank()) {
             firstName = null;
         }
@@ -114,9 +118,9 @@ public class DemoController {
 
     @PostMapping("/edit-consumer/{market}/{consumerId}")
     public String updeate(Consumer consumer,
-                                 @RequestParam String market,
-                                 @RequestParam Long consumerId,
-                                 Model model) throws ApiException {
+                          @RequestParam String market,
+                          @RequestParam Long consumerId,
+                          Model model) throws ApiException {
         log.trace("attempting to update consumer");
 
         final ApiClient apiClient = api.getApiClient();
